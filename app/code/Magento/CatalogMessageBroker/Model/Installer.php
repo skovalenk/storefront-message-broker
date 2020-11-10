@@ -37,16 +37,24 @@ class Installer
     private $dateTime;
 
     /**
+     * @var ModulesCollector
+     */
+    private $modulesCollector;
+
+    /**
      * Installer constructor.
      * @param Writer $deploymentConfigWriter
      * @param DateTime $dateTime
+     * @param ModulesCollector $modulesCollector
      */
     public function __construct(
         Writer $deploymentConfigWriter,
-        DateTime $dateTime
+        DateTime $dateTime,
+        ModulesCollector $modulesCollector
     ) {
         $this->deploymentConfigWriter = $deploymentConfigWriter;
         $this->dateTime = $dateTime;
+        $this->modulesCollector = $modulesCollector;
     }
 
     /**
@@ -106,7 +114,8 @@ class Installer
                 'install' => [
                     'date' => $this->dateTime->formatDate(true)
                 ]
-            ]
+            ],
+            'app_config' => $this->modulesCollector->execute()
         ];
 
         $this->deploymentConfigWriter->saveConfig($config);
