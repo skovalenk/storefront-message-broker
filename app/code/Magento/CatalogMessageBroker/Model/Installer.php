@@ -84,18 +84,22 @@ class Installer
                 ],
                 'system' => [
                     'default' => [
-                        'catalog' => [
-                            'search' => [
-                                self::ELASTICSEARCH_PORT => $parameters[self::ELASTICSEARCH_PORT],
-                                self::ELASTICSEARCH_INDEX_PREFIX => $parameters[self::ELASTICSEARCH_INDEX_PREFIX],
-                                self::ELASTICSEARCH_HOST => $parameters[self::ELASTICSEARCH_HOST],
-                                self::ELASTICSEARCH_ENGINE => $parameters[self::ELASTICSEARCH_ENGINE],
-                            ]
-                        ],
                         'backoffice' => [
                             'web' => [
                                 'base_url' => $parameters[self::BASE_URL]
                             ]
+                        ]
+                    ]
+                ],
+                'catalog-store-front' => [
+                    'connections' => [
+                        'default' => [
+                            'protocol' => 'http',
+                            'hostname' => $parameters[self::ELASTICSEARCH_HOST],
+                            'port' => $parameters[self::ELASTICSEARCH_PORT],
+                            'username' => '',
+                            'password' => '',
+                            'timeout' => 3
                         ]
                     ]
                 ],

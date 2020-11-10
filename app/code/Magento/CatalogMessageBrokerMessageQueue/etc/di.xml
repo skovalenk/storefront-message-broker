@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="\Magento\MessageQueue\Model\ResourceModel\Lock" type="Magento\Amqp\Model\ResourceModel\MessageQueueLock" />
+    <preference for="\Magento\MessageQueue\Model\ResourceModel\Lock" type="\Magento\CatalogMessageBroker\Model\Amqp\ResourceModel\MessageQueueLock" />
     <type name="Magento\Framework\Console\CommandListInterface">
         <arguments>
             <argument name="commands" xsi:type="array">
